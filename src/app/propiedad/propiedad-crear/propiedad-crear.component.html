@@ -1,0 +1,180 @@
+<app-encabezado></app-encabezado>
+<h1>
+  Nueva propiedad 
+</h1>
+
+<form
+ [formGroup]="propiedadForm"
+ (ngSubmit)="!propiedadForm.invalid && crearPropiedad(propiedadForm.value)"
+>
+  <div class="row">
+    <div class="col col-6">
+      <!--Nombre propiedad-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre_propiedad">Nombre Propiedad</label>
+        <input
+          novalidate
+          id="nombre_propiedad"
+          class="form-control"
+          formControlName="nombre_propiedad"
+          placeholder="Nombre propiedad"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          propiedadForm.get('nombre_propiedad')!.hasError('required') &&
+          propiedadForm.get('nombre_propiedad')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+
+      <!--Ciudad-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="ciudad">Ciudad</label>
+        <input
+          novalidate
+          id="ciudad"
+          class="form-control"
+          formControlName="ciudad"
+          placeholder="Ciudad"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            propiedadForm.get('ciudad')!.hasError('required') &&
+            propiedadForm.get('ciudad')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Municipio-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="municipio">Municipio</label>
+        <input
+          novalidate
+          id="municipio"
+          class="form-control"
+          formControlName="municipio"
+          placeholder="Municipio"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            propiedadForm.get('municipio')!.hasError('required') &&
+            propiedadForm.get('municipio')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Direccion-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="direccion">Dirección</label>
+        <input
+          novalidate
+          id="direccion"
+          class="form-control"
+          formControlName="direccion"
+          placeholder="Dirección"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            propiedadForm.get('direccion')!.hasError('required') &&
+            propiedadForm.get('direccion')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Nombre propietario-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre-propietario">Nombre Propietario</label>
+        <input
+          novalidate
+          id="nombre_propietario"
+          class="form-control"
+          formControlName="nombre_propietario"
+          placeholder="Nombre propietario"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          propiedadForm.get('nombre_propietario')!.hasError('required') &&
+          propiedadForm.get('nombre_propietario')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+
+      <!--Numero contacto-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="numero-contacto">Número de contacto</label>
+        <input
+          novalidate
+          id="numero_contacto"
+          class="form-control"
+          formControlName="numero_contacto"
+          placeholder="Número de contacto"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            propiedadForm.get('numero_contacto')!.hasError('required') &&
+            propiedadForm.get('numero_contacto')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+
+      <!--Banco-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="banco">Banco</label>
+        <select
+          formControlName="banco"
+          class="form-control">
+          <option [ngValue]="null" [selected]="true"></option>
+          <option *ngFor="let banco of listaBancos" [ngValue]="banco">{{banco}}</option>
+        </select>
+        <div class="alert alert-danger alert-dismissible fade show"
+              *ngIf="propiedadForm.get('banco')!.hasError('required') && propiedadForm.get('banco')!.touched">
+          Contenido requerido
+        </div>
+      </div>
+
+      <!--Numero cuenta-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="numero-cuenta">Número de cuenta</label>
+        <input
+          novalidate
+          id="numero_cuenta"
+          class="form-control"
+          formControlName="numero_cuenta"
+          placeholder="Número de cuenta"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            propiedadForm.get('numero_cuenta')!.hasError('required') &&
+            propiedadForm.get('numero_cuenta')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" [disabled]="!propiedadForm.valid">Guardar</button>&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarPropiedad()">Cancelar</button>
+</form>

@@ -1,0 +1,28 @@
+<app-encabezado></app-encabezado>
+<h1>Propiedades</h1>
+      
+      Propiedades <button type="button" class="btn btn-warning" (click)="crearPropiedad()"><i class="bi bi-plus-circle"></i></button>
+      <div>
+      <table class="table" border="0">
+        <thead>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Nombre propietario</th>
+          <th>Contacto</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let propiedad of propiedades">
+            <td><a href="/propiedades/{{propiedad.id}}/reservas">{{propiedad.nombre_propiedad}}</a></td>
+            <td>{{propiedad.direccion}}</td>
+            <td>{{propiedad.nombre_propietario}}</td>
+            <td>{{propiedad.numero_contacto}}</td>
+            <td>
+              <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-warning" (click)="movimientos(propiedad.id)"><i class="bi bi-cash-coin"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

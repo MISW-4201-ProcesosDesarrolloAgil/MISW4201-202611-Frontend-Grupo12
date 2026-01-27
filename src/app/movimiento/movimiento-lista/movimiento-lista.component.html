@@ -1,0 +1,64 @@
+<app-encabezado></app-encabezado>
+<h1>Movimientos</h1>
+      <div class="row">
+        <div class="col col-12">
+          <h4>Ingresos <button type="button" class="btn btn-warning" (click)="crearMovimiento()"><i class="bi bi-plus-circle"></i></button> </h4>
+        </div>
+        <div *ngIf="ingresos.length > 0; else elseBlock">
+          <table class="table" border="0">
+            <thead>
+              <th>Fecha</th>
+              <th>Concepto</th>
+              <th>Valor</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ingreso of ingresos">
+                <td>{{ingreso.fecha}}</td>
+                <td>{{ingreso.concepto}}</td>
+                <td>{{ingreso.valor}}</td>
+                <td>
+                  <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarMovimiento(ingreso.id)"><i class="bi bi-pencil"></i></button>&nbsp;
+                  <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarMovimiento(ingreso.id)"><i class="bi bi-trash"></i></button>&nbsp;
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #elseBlock>
+          <div style="text-align:center;">
+            Esta propiedad no tiene ingresos
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="row">
+        <div class="col col-12">
+        <h4> Egresos <button type="button" class="btn btn-warning" (click)="crearMovimiento()"><i class="bi bi-plus-circle"></i></button> </h4>
+        </div>
+        <div *ngIf="egresos.length > 0; else noEgresos">
+          <table class="table" border="0">
+            <thead>
+              <th>Fecha</th>
+              <th>Concepto</th>
+              <th>Valor</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let egreso of egresos">
+                <td>{{egreso.fecha}}</td>
+                <td>{{egreso.concepto}}</td>
+                <td>{{egreso.valor}}</td>
+                <td>
+                  <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarMovimiento(egreso.id)"><i class="bi bi-pencil"></i></button>&nbsp;
+                  <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarMovimiento(egreso.id)"><i class="bi bi-trash"></i></button>&nbsp;
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <ng-template #noEgresos>
+        <div style="text-align:center;">
+          Esta propiedad no tiene egresos
+        </div>
+      </ng-template>
+      </div>
+      

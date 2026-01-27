@@ -1,0 +1,105 @@
+<app-encabezado></app-encabezado>
+<h1>
+  Crear Movimiento
+</h1>
+
+<form
+ [formGroup]="movimientoForm"
+ (ngSubmit)="!movimientoForm.invalid && crearMovimiento(movimientoForm.value)"
+>
+  <div class="row">
+    <div class="col col-6">
+      <!--Fecha-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="fecha">Fecha</label>
+        <input
+          novalidate
+          type="datetime-local"
+          id="fecha"
+          class="form-control"
+          formControlName="fecha"
+          placeholder="Fecha"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          movimientoForm.get('fecha')!.hasError('required') &&
+          movimientoForm.get('fecha')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+
+      <!--Concepto-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="concepto">Concepto</label>
+        <input
+          novalidate
+          id="concepto"
+          class="form-control"
+          formControlName="concepto"
+          placeholder="Concepto"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            movimientoForm.get('concepto')!.hasError('required') &&
+            movimientoForm.get('concepto')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Valor-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="valor">Valor</label>
+        <input
+          novalidate
+          id="valor"
+          class="form-control"
+          formControlName="valor"
+          placeholder="Valor"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            movimientoForm.get('valor')!.hasError('required') &&
+            movimientoForm.get('valor')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+
+      <!--Reserva-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="reserva">Reserva</label>
+        <select 
+          formControlName="id_reserva"
+          class="form-control">
+          <option [ngValue]="null" [selected]="true"></option>
+          <option *ngFor="let reserva of listaReservas" [ngValue]="reserva.id">{{reserva.nombre}} - {{reserva.fecha_ingreso}}</option>
+        </select>
+      </div>
+
+
+      <!--Tipo movimiento-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="reserva">Tipo de movimiento</label>
+        <select
+          formControlName="tipo_movimiento"
+          class="form-control">
+          <option [ngValue]="null" disabled>Elegir tipo de movimiento</option>
+          <option *ngFor="let tipoMovimiento of tiposMovimiento" [ngValue]="tipoMovimiento">{{tipoMovimiento}}</option>
+        </select>
+      </div>
+
+      
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" [disabled]="!movimientoForm.valid">Guardar</button>&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarCrearMovimiento()">Cancelar</button>
+</form>
