@@ -1,0 +1,29 @@
+name: Angular merge feature -> develop
+
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout entorno
+        uses: actions/checkout@v4
+
+      - name: configurar node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: instalar dependencias
+        run: |
+          npm ci
+
+      - name: cjecutar tests
+        run: |
+          npm run test -- --watch=false --browsers=ChromeHeadless
