@@ -1,0 +1,38 @@
+<nav class="sidebar" [class.collapsed]="collapsed" aria-label="Main navigation">
+  <div class="brand">
+    <button class="toggle" (click)="toggle()" aria-label="Toggle sidebar">☰</button>
+    <span class="title">Gestión</span>
+  </div>
+  <ul class="menu">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/']" title="Inicio">
+        <span class="icon" aria-hidden="true">🏠</span>
+        <span class="label">Inicio</span>
+      </a>
+    </li>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/registro']" title="Registro">
+        <span class="icon" aria-hidden="true">👤</span>
+        <span class="label">Registro</span>
+      </a>
+    </li>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/propiedades']" title="Propiedades">
+        <span class="icon" aria-hidden="true">🏡</span>
+        <span class="label">Propiedades</span>
+      </a>
+    </li>
+    <li class="note" title="Selecciona una propiedad para acceder" >
+      <a href="#" (click)="goTo('/propiedades', $event)">
+        <span class="icon" aria-hidden="true">📅</span>
+        <span class="label">Reservas</span>
+      </a>
+    </li>
+    <li class="note" title="Selecciona una propiedad para acceder">
+      <a href="#" (click)="goTo('/propiedades', $event)">
+        <span class="icon" aria-hidden="true">💸</span>
+        <span class="label">Movimientos</span>
+      </a>
+    </li>
+  </ul>
+</nav>

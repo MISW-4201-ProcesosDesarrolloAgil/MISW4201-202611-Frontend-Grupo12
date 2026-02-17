@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+/* Make the root content full width so the fixed sidebar doesn't leave a white gap */
 .content {
-    max-width: 960px;
-    margin: auto;
-  }
+    max-width: none;
+    width: 100%;
+    margin: 0;
+}
+
+/* Match page background to app layout */
+body {
+    background: #f8fafc;
+}
 
 td {
     text-align: center;
