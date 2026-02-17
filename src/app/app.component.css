@@ -1,0 +1,14 @@
+:host {
+	display: block;
+}
+.app-layout {
+	margin-left: 200px; /* leave space for sidebar */
+	min-height: 100vh;
+	background: #f8fafc;
+}
+.main-content {
+	padding: 20px;
+}
+
+/* Make main content scroll independently while sidebar stays fixed */
+html, body, :host, .app-layout { height: 100%; }
