@@ -30,6 +30,7 @@ export class MovimientoListaComponent implements OnInit {
 
   ngOnInit() {
     this.idPropiedad = parseInt(this.router.snapshot.params['id']);
+    sessionStorage.setItem('activePropiedadId', String(this.idPropiedad));
     this.movimientoService.obtenerMovimientos(this.idPropiedad).subscribe((movimientos) => {
       this.movimientos = movimientos;
 

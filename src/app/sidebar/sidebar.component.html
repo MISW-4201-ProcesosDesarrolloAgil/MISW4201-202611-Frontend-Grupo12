@@ -22,17 +22,33 @@
         <span class="label">Propiedades</span>
       </a>
     </li>
-    <li class="note" title="Selecciona una propiedad para acceder" >
-      <a href="#" (click)="goTo('/propiedades', $event)">
-        <span class="icon" aria-hidden="true">📅</span>
-        <span class="label">Reservas</span>
-      </a>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [class.disabled]="!reservasLink">
+      <ng-container *ngIf="reservasLink; else reservasDisabled">
+        <a [routerLink]="reservasLink" title="Reservas">
+          <span class="icon" aria-hidden="true">📅</span>
+          <span class="label">Reservas</span>
+        </a>
+      </ng-container>
+      <ng-template #reservasDisabled>
+        <a href="#" (click)="goTo('/propiedades', $event)" title="Selecciona una propiedad para acceder">
+          <span class="icon" aria-hidden="true">📅</span>
+          <span class="label">Reservas</span>
+        </a>
+      </ng-template>
     </li>
-    <li class="note" title="Selecciona una propiedad para acceder">
-      <a href="#" (click)="goTo('/propiedades', $event)">
-        <span class="icon" aria-hidden="true">💸</span>
-        <span class="label">Movimientos</span>
-      </a>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [class.disabled]="!movimientosLink">
+      <ng-container *ngIf="movimientosLink; else movimientosDisabled">
+        <a [routerLink]="movimientosLink" title="Movimientos">
+          <span class="icon" aria-hidden="true">💸</span>
+          <span class="label">Movimientos</span>
+        </a>
+      </ng-container>
+      <ng-template #movimientosDisabled>
+        <a href="#" (click)="goTo('/propiedades', $event)" title="Selecciona una propiedad para acceder">
+          <span class="icon" aria-hidden="true">💸</span>
+          <span class="label">Movimientos</span>
+        </a>
+      </ng-template>
     </li>
   </ul>
 </nav>

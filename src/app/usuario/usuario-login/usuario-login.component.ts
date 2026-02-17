@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -9,7 +10,7 @@ import { UsuarioService } from '../usuario.service';
 @Component({
   selector: 'app-usuario-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './usuario-login.component.html',
   styleUrls: ['./usuario-login.component.css']
 })
@@ -24,9 +25,12 @@ export class UsuarioLoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    sessionStorage.setItem('decodedToken', '');
-    sessionStorage.setItem('token', '');
-    sessionStorage.setItem('idUsuario', '');
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      sessionStorage.setItem('decodedToken', '');
+      sessionStorage.setItem('token', '');
+      sessionStorage.setItem('idUsuario', '');
+    }
   }
 
   loginUsuario(usuario: string, contrasena: string) {

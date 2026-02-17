@@ -54,6 +54,14 @@
   color: #fff;
   border-left-color: #3b82f6;
 }
+.sidebar .menu li.disabled a {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.sidebar .menu li.disabled a:hover {
+  background: transparent;
+  color: #cbd5e1;
+}
 .sidebar .menu li .icon {
   width: 24px;
   text-align: center;

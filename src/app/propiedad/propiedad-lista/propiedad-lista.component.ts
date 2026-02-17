@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Propiedad } from '../propiedad';
 import { PropiedadService } from '../propiedad.service';
@@ -9,7 +9,7 @@ import { EncabezadoComponent } from '../../encabezado-app/encabezado/encabezado.
 @Component({
   selector: 'app-propiedad-lista',
   standalone: true,
-  imports: [CommonModule, EncabezadoComponent],
+  imports: [CommonModule, RouterModule, EncabezadoComponent],
   templateUrl: './propiedad-lista.component.html',
   styleUrls: ['./propiedad-lista.component.css']
 })
@@ -47,7 +47,12 @@ export class PropiedadListaComponent implements OnInit {
   }
 
   movimientos(idPropiedad: number): void {
+    this.setActivePropiedad(idPropiedad);
     this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/movimientos']);
+  }
+
+  setActivePropiedad(idPropiedad: number): void {
+    sessionStorage.setItem('activePropiedadId', String(idPropiedad));
   }
 
   editarPropiedad(idPropiedad: number):void {

@@ -27,6 +27,7 @@ export class ReservaListaComponent implements OnInit {
 
   ngOnInit() {
     this.idPropiedad = parseInt(this.router.snapshot.params['id']);
+    sessionStorage.setItem('activePropiedadId', String(this.idPropiedad));
     this.reservaService.obtenerReservas(this.idPropiedad).subscribe((reservas) => {
       this.reservas = reservas;
     })

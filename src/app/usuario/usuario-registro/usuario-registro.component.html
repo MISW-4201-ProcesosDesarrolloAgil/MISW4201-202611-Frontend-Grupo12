@@ -80,7 +80,7 @@
               [disabled]="!usuarioForm.valid || usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">Registrarse</button>
           </div>
           <div class="col-12 text-center mt-2">
-            <p>¿Ya tienes cuenta? <a href="/">Inicia sesión</a></p>
+            <p>¿Ya tienes cuenta? <a [routerLink]="['/']">Inicia sesión</a></p>
           </div>
 
         </form>
