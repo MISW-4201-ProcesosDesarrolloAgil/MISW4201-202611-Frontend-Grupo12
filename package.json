@@ -2,11 +2,19 @@
   "name": "proyecto-frontend",
   "version": "0.0.0",
   "scripts": {
+    "add-hooks": "scripts/add-hooks.sh",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
+    "postinstall": "ng build --configuration production"
+  },
+  "engines": {
+    "node": "14.20",
+      "npm": "9.4.1"
   },
   "private": true,
   "dependencies": {
