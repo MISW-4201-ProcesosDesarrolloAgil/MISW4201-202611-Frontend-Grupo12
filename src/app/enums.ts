@@ -10,3 +10,9 @@ export class TipoMovimiento {
         
     }
 }
+export class ZonaPosible {
+
+    public constructor() {
+
+    }
+}
