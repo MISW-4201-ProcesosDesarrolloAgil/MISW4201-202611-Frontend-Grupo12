@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://git.heroku.com/procesos.git'
+    apiUrl: 'https://procesos-07c1e4dc5107.herokuapp.com'
     //apiUrl: 'http://127.0.0.1:8080'
   };

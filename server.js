@@ -3,16 +3,10 @@ const path = require('path');
 
 const app = express();
 
-// ⚠️ nombre REAL del proyecto Angular
-const distPath = path.join(
-  __dirname,
-  'dist/MISW4201-202611-Frontend-Grupo12'
-);
-
-app.use(express.static(distPath));
+app.use(express.static(path.join(__dirname, 'dist/proyecto-frontend')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist/proyecto-frontend/index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
