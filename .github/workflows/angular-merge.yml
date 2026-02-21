@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   job-pruebas:
-    name: ejecutar pruebas
+    name: Ejecutar pruebas Cypress
     runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, '[FINISHED]')
     steps:
@@ -27,8 +27,8 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Ejecutar tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+      - name: Ejecutar pruebas Cypress
+        run: npx start-server-and-test 'ng serve --watch=false' http://localhost:4200 'cypress run'
 
   job-merge-develop:
     name: Merge automático con develop
