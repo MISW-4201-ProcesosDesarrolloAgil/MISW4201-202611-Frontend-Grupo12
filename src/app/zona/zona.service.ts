@@ -19,4 +19,8 @@ export class ZonaService {
     return this.http.post<Zona>(`${this.apiUrl}/propiedades/${id_propiedad}/zonas`, zona)
   }
 
+  obtenerZonasPropiedad(id_propiedad: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/propiedades/${id_propiedad}/zonas`)
+  }
+
 }
