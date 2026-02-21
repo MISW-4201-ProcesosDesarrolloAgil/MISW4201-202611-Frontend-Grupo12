@@ -51,6 +51,16 @@ export class PropiedadListaComponent implements OnInit {
     this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/movimientos']);
   }
 
+  crearZona(idPropiedad: number): void {
+    this.setActivePropiedad(idPropiedad);
+    this.routerPath.navigate(['/propiedades/' + idPropiedad + '/zona/crear']);
+  }
+
+  crearElementoZona(idPropiedad: number): void {
+    this.setActivePropiedad(idPropiedad);
+    this.routerPath.navigate(['/propiedades/' + idPropiedad + '/elemento-zona/crear']);
+  }
+
   setActivePropiedad(idPropiedad: number): void {
     sessionStorage.setItem('activePropiedadId', String(idPropiedad));
   }

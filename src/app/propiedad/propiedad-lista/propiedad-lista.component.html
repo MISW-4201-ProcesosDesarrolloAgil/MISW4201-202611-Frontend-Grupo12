@@ -20,7 +20,13 @@
             <td>
               <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>&nbsp;
               <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-warning" (click)="movimientos(propiedad.id)"><i class="bi bi-cash-coin"></i></button>
+              <button [disabled]="false" type="button" class="btn btn-warning" (click)="movimientos(propiedad.id)"><i class="bi bi-cash-coin"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-info" title="Registrar zona" (click)="crearZona(propiedad.id)">
+                <i class="bi bi-plus-square"></i> Zona
+              </button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-secondary" title="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
+                <i class="bi bi-plus-square-dotted"></i> Elemento zona
+              </button>
             </td>
           </tr>
         </tbody>

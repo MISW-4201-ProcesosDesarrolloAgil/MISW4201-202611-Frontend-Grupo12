@@ -1,0 +1,43 @@
+<app-encabezado></app-encabezado>
+<h1>
+  Nueva zona
+</h1>
+
+<form
+ [formGroup]="zonaForm"
+ (ngSubmit)="!zonaForm.invalid && crearZona(zonaForm.value)"
+>
+  <div class="row">
+    <div class="col col-6">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre_zona">Zona</label>
+        <select
+          id="nombre_zona"
+          formControlName="nombre_zona"
+          class="form-control">
+          <option [ngValue]="null" [selected]="true"></option>
+          <option *ngFor="let zonaPosible of listaZonasPosibles" [ngValue]="zonaPosible">{{zonaPosible}}</option>
+        </select>
+        <div class="alert alert-danger alert-dismissible fade show"
+              *ngIf="zonaForm.get('nombre_zona')!.hasError('required') && zonaForm.get('nombre_zona')!.touched">
+          Contenido requerido
+        </div>
+      </div>
+
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="descripcion">Descripción (opcional)</label>
+        <input
+          novalidate
+          id="descripcion"
+          class="form-control"
+          formControlName="descripcion"
+          placeholder="Ej: Cocina principal"
+        />
+      </div>
+
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!zonaForm.valid">Crear</button>&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarCrearZona()">Cancelar</button>
+</form>
