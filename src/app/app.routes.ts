@@ -67,6 +67,12 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   { 
+    path: 'propiedades/:id/elemento-zona/crear', 
+    loadComponent: () => import('./elemento-zona/elemento-zona-crear/elemento-zona-crear.component').then(m => m.ElementoZonaCrearComponent),
+    canActivate: [authGuard],
+    pathMatch: 'full'
+  },
+  { 
     path: 'propiedades/:id_propiedad/reserva/editar/:id_reserva', 
     loadComponent: () => import('./reserva/reserva-editar/reserva-editar.component').then(m => m.ReservaEditarComponent),
     canActivate: [authGuard],
