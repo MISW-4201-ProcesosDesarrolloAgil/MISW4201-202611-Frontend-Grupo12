@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from '../usuario.service';
@@ -31,7 +31,18 @@ export class UsuarioRegistroComponent implements OnInit {
       usuario: ["", [Validators.required, Validators.maxLength(50)]],
       password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
       confirmPassword: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]]
-    });
+    }, { validators: this.passwordsMatchValidator });
+  }
+
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (!password || !confirmPassword) {
+      return null;
+    }
+
+    return password.value === confirmPassword.value ? null : { passwordsMismatch: true };
   }
 
   registrarUsuario() {
