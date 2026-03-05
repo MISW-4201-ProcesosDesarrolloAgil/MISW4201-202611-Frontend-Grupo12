@@ -9,10 +9,10 @@ import { ElementoZona } from './elemento-zona';
 })
 export class ElementoZonaService {
 
-  private apiUrl = environment.apiUrl;
+  private readonly apiUrl = environment.apiUrl;
 
   constructor(
-    private http: HttpClient
+    private readonly http: HttpClient
   ) { }
 
   crearElementoZona(elementoZona: ElementoZona, id_propiedad: number): Observable<ElementoZona> {
@@ -27,6 +27,10 @@ export class ElementoZonaService {
       `${this.apiUrl}/zonas/${elementoZona.id_zona}/elementos`,
       payload
     )
+  }
+
+  obtenerElementosZona(id_zona: number): Observable<ElementoZona[]> {
+    return this.http.get<ElementoZona[]>(`${this.apiUrl}/zonas/${id_zona}/elementos`);
   }
 
   private normalizarFechaRegistro(fechaRegistro: string): string {

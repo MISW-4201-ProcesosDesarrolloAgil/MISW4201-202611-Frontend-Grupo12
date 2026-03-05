@@ -5,6 +5,7 @@ import { UsuarioRegistroComponent } from './usuario/usuario-registro/usuario-reg
 import { PropiedadListaComponent } from './propiedad/propiedad-lista/propiedad-lista.component';
 import { PropiedadCrearComponent } from './propiedad/propiedad-crear/propiedad-crear.component';
 import { PropiedadEditarComponent } from './propiedad/propiedad-editar/propiedad-editar.component';
+import { PropiedadDetalleComponent } from './propiedad/propiedad-detalle/propiedad-detalle.component';
 import { ReservaListaComponent } from './reserva/reserva-lista/reserva-lista.component';
 import { ReservaCrearComponent } from './reserva/reserva-crear/reserva-crear.component';
 import { ReservaEditarComponent } from './reserva/reserva-editar/reserva-editar.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'propiedades', component: PropiedadListaComponent, pathMatch: 'full'},
   { path: 'propiedad/crear', component: PropiedadCrearComponent, pathMatch: 'full'},
   { path: 'propiedad/editar/:id', component: PropiedadEditarComponent, pathMatch: 'full'},
+  { path: 'propiedad/detalle/:id', component: PropiedadDetalleComponent, pathMatch: 'full'},
   { path: 'propiedades/:id/reservas', component: ReservaListaComponent, pathMatch: 'full'},
   { path: 'propiedades/:id/movimientos', component: MovimientoListaComponent, pathMatch: 'full'},
   { path: 'propiedades/:id/movimientos/editar/:id_movimiento', component: MovimientoEditarComponent, pathMatch: 'full'},
