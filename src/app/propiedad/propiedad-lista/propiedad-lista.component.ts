@@ -46,9 +46,14 @@ export class PropiedadListaComponent implements OnInit {
     this.routerPath.navigate(['/propiedad/crear/']);
   }
 
-  movimientos(idPropiedad: number): void {
+  verIngresos(idPropiedad: number): void {
     this.setActivePropiedad(idPropiedad);
-    this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/movimientos']);
+    this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/ingresos']);
+  }
+
+  verEgresos(idPropiedad: number): void {
+    this.setActivePropiedad(idPropiedad);
+    this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/egresos']);
   }
 
   crearZona(idPropiedad: number): void {
