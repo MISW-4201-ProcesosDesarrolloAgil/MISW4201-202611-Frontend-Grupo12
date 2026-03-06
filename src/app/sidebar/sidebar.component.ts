@@ -42,8 +42,12 @@ export class SidebarComponent implements OnInit, OnDestroy {
     return this.activePropiedadId ? ['/propiedades', String(this.activePropiedadId), 'reservas'] : null;
   }
 
-  get movimientosLink(): string[] | null {
-    return this.activePropiedadId ? ['/propiedades', String(this.activePropiedadId), 'movimientos'] : null;
+  get ingresosLink(): string[] | null {
+    return this.activePropiedadId ? ['/propiedades', String(this.activePropiedadId), 'ingresos'] : null;
+  }
+
+  get egresosLink(): string[] | null {
+    return this.activePropiedadId ? ['/propiedades', String(this.activePropiedadId), 'egresos'] : null;
   }
 
   private refreshActivePropiedadId() {
