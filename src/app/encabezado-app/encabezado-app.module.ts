@@ -4,11 +4,9 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    EncabezadoComponent
   ],
-  declarations: [
-      EncabezadoComponent
-   ],
   exports: [
     EncabezadoComponent
   ]

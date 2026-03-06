@@ -10,9 +10,7 @@ import { MovimientoCrearComponent } from './movimiento-crear/movimiento-crear.co
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EncabezadoAppModule
-  ],
-  declarations: [
+    EncabezadoAppModule,
     MovimientoListaComponent,
     MovimientoEditarComponent,
     MovimientoCrearComponent

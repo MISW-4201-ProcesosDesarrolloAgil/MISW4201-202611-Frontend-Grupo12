@@ -10,9 +10,7 @@ import { ReservaEditarComponent } from './reserva-editar/reserva-editar.componen
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EncabezadoAppModule
-  ],
-  declarations: [
+    EncabezadoAppModule,
     ReservaListaComponent,
     ReservaCrearComponent,
     ReservaEditarComponent

@@ -1,0 +1,162 @@
+<app-encabezado></app-encabezado>
+
+<div class="detalle-container" *ngIf="!cargando && !error && propiedad">
+
+  <!-- Back navigation -->
+  <button class="volver-link" (click)="volverAPropiedades()">
+    <i class="bi bi-arrow-left"></i> Volver a mis propiedades
+  </button>
+  <div class="propiedad-header">
+    <div class="propiedad-titulo-bloque">
+      <div class="icono-propiedad">
+        <i class="bi bi-building"></i>
+      </div>
+      <div>
+        <h1 class="propiedad-nombre">{{ propiedad.nombre_propiedad }}</h1>
+        <p class="propiedad-direccion">
+          <i class="bi bi-geo-alt"></i>
+          {{ propiedad.direccion }}, {{ propiedad.municipio }}, {{ propiedad.ciudad }}
+        </p>
+      </div>
+    </div>
+    <span class="badge-estado activa">Activa</span>
+  </div>
+
+  <!-- Información general -->
+  <div class="card-seccion">
+    <h2 class="seccion-titulo">
+      <i class="bi bi-house-door"></i> Información de la Propiedad
+    </h2>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <i class="bi bi-person"></i>
+        <div>
+          <span class="info-label">Propietario</span>
+          <span class="info-value">{{ propiedad.nombre_propietario }}</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="bi bi-telephone"></i>
+        <div>
+          <span class="info-label">Contacto</span>
+          <span class="info-value">{{ propiedad.numero_contacto }}</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="bi bi-geo-alt"></i>
+        <div>
+          <span class="info-label">Ciudad</span>
+          <span class="info-value">{{ propiedad.ciudad }}</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="bi bi-map"></i>
+        <div>
+          <span class="info-label">Municipio</span>
+          <span class="info-value">{{ propiedad.municipio }}</span>
+        </div>
+      </div>
+      <div class="info-item" *ngIf="propiedad.banco">
+        <i class="bi bi-bank"></i>
+        <div>
+          <span class="info-label">Banco</span>
+          <span class="info-value">{{ propiedad.banco }}</span>
+        </div>
+      </div>
+      <div class="info-item" *ngIf="propiedad.numero_cuenta">
+        <i class="bi bi-credit-card"></i>
+        <div>
+          <span class="info-label">Número de cuenta</span>
+          <span class="info-value">{{ propiedad.numero_cuenta }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservas -->
+  <div class="card-seccion">
+    <h2 class="seccion-titulo">
+      <i class="bi bi-calendar3"></i> Reservas
+    </h2>
+
+    <div *ngIf="reservas.length === 0" class="sin-reservas">
+      No hay reservas registradas para esta propiedad.
+    </div>
+
+    <table class="tabla-reservas" *ngIf="reservas.length > 0">
+      <thead>
+        <tr>
+          <th><i class="bi bi-person"></i> Huésped</th>
+          <th>Entrada</th>
+          <th>Salida</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reserva of reservas">
+          <td>{{ reserva.nombre }}</td>
+          <td>{{ reserva.fecha_ingreso | date:'dd/MM/yyyy' }}</td>
+          <td>{{ reserva.fecha_salida | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <span class="badge-reserva" [ngClass]="claseBadgeReserva(reserva)">
+              {{ estadoReserva(reserva) }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Zonas e inventario -->
+  <div class="card-seccion">
+    <h2 class="seccion-titulo">
+      <i class="bi bi-grid-3x3-gap"></i> Zonas e Inventario
+    </h2>
+
+    <div *ngIf="zonas.length === 0" class="sin-reservas">
+      No hay zonas registradas para esta propiedad.
+    </div>
+
+    <div class="zonas-grid" *ngIf="zonas.length > 0">
+      <div class="zona-card" *ngFor="let zona of zonas">
+        <div class="zona-header">
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span class="zona-nombre">{{ formatearNombreZona(zona.nombre_zona) }}</span>
+          <span class="zona-badge">{{ etiquetaElementos(zona) }}</span>
+        </div>
+        <p class="zona-descripcion" *ngIf="zona.descripcion">{{ zona.descripcion }}</p>
+
+        <div *ngIf="zona.elementos.length === 0" class="sin-elementos">
+          Sin elementos registrados.
+        </div>
+
+        <table class="tabla-elementos" *ngIf="zona.elementos.length > 0">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Descripción</th>
+              <th class="col-cantidad">Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let el of zona.elementos">
+              <td>{{ el.nombre_elemento }}</td>
+              <td class="col-descripcion">{{ el.descripcion || '—' }}</td>
+              <td class="col-cantidad"><span class="cantidad-badge">{{ el.cantidad }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="detalle-container" *ngIf="cargando">
+  <div class="estado-mensaje">Cargando información de la propiedad...</div>
+</div>
+
+<!-- Error state -->
+<div class="detalle-container" *ngIf="error">
+  <div class="estado-mensaje error">{{ error }}</div>
+</div>

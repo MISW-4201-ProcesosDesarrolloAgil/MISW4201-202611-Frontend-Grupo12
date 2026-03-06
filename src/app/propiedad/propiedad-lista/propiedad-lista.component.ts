@@ -70,6 +70,10 @@ export class PropiedadListaComponent implements OnInit {
     sessionStorage.setItem('activePropiedadId', String(idPropiedad));
   }
 
+  verDetalle(idPropiedad: number): void {
+    this.routerPath.navigate(['/propiedad/detalle/' + idPropiedad]);
+  }
+
   editarPropiedad(idPropiedad: number):void {
     this.routerPath.navigate(['/propiedad/editar/' + idPropiedad]);
   }
