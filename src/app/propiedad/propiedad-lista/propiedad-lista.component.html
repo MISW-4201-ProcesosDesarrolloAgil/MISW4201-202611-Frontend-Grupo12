@@ -20,7 +20,8 @@
             <td>
               <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>&nbsp;
               <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-warning" (click)="movimientos(propiedad.id)"><i class="bi bi-cash-coin"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-success" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-dark" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2"></i></button>&nbsp;
               <button [disabled]="false" type="button" class="btn btn-info" title="Registrar zona" (click)="crearZona(propiedad.id)">
                 <i class="bi bi-plus-square"></i> Zona
               </button>&nbsp;

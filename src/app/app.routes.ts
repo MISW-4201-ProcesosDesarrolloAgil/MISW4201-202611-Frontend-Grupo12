@@ -49,6 +49,18 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   { 
+    path: 'propiedades/:id/ingresos', 
+    loadComponent: () => import('./movimiento/ingreso-lista/ingreso-lista.component').then(m => m.IngresoListaComponent),
+    canActivate: [authGuard],
+    pathMatch: 'full'
+  },
+  { 
+    path: 'propiedades/:id/egresos', 
+    loadComponent: () => import('./movimiento/egreso-lista/egreso-lista.component').then(m => m.EgresoListaComponent),
+    canActivate: [authGuard],
+    pathMatch: 'full'
+  },
+  { 
     path: 'propiedades/:id/movimientos/editar/:id_movimiento', 
     loadComponent: () => import('./movimiento/movimiento-editar/movimiento-editar.component').then(m => m.MovimientoEditarComponent),
     canActivate: [authGuard],
