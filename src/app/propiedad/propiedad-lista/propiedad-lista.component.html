@@ -7,8 +7,8 @@
         <thead>
           <th>Nombre</th>
           <th>Estado</th>
-          <th>Detalle</th>
-          <th>Acciones</th>
+          <th>Gestion de propiedad</th>
+          <th>Administracion del inmueble</th>
         </thead>
         <tbody>
           <tr *ngFor="let propiedad of propiedades">
@@ -19,21 +19,25 @@
               </span>
             </td>
             <td>
-              <button type="button" class="btn btn-outline-primary" (click)="verDetalle(propiedad.id)">
-                <i class="bi bi-eye" title="Ver detalle"></i> Ver detalle
-              </button>
+              <div class="acciones-botones">
+                <button type="button" class="btn btn-outline-primary" title="Ver detalle" (click)="verDetalle(propiedad.id)">
+                  <i class="bi bi-eye" title="Ver detalle"></i> Ver detalle
+                </button>
+                <button [disabled]="false" type="button" class="btn btn-primary accion-icono-btn" title="Editar propiedad" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil" title="Editar"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-danger accion-icono-btn" title="Eliminar propiedad" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash" title="Eliminar"></i></button>
+              </div>
             </td>
             <td>
-              <button [disabled]="false" type="button" class="btn btn-primary" title="Editar propiedad" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil" title="Editar"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-danger" title="Eliminar propiedad" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash" title="Eliminar"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-success" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack" title="Ingresos"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-dark" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2" title="Egresos"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-info" title="Registrar zona" (click)="crearZona(propiedad.id)">
-                <i class="bi bi-house-add" title="Crear zona"></i>
-              </button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-secondary" title="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
-                <i class="bi bi-box-seam" title="Registrar elemento de zona"></i>
-              </button>
+              <div class="acciones-botones">
+                <button [disabled]="false" type="button" class="btn btn-success accion-icono-btn" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack" title="Ingresos"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-dark accion-icono-btn" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2" title="Egresos"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-info accion-icono-btn" title="Registrar zona" (click)="crearZona(propiedad.id)">
+                  <i class="bi bi-house-add" title="Crear zona"></i>
+                </button>
+                <button [disabled]="false" type="button" class="btn btn-secondary accion-icono-btn" title="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
+                  <i class="bi bi-box-seam" title="Registrar elemento de zona"></i>
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
