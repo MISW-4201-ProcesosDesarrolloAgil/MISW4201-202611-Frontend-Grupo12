@@ -1,7 +1,7 @@
 <app-encabezado></app-encabezado>
 <h1>Propiedades</h1>
       
-      Propiedades <button type="button" class="btn btn-warning" (click)="crearPropiedad()"><i class="bi bi-plus-circle"></i></button>
+      Propiedades <button type="button" class="btn btn-warning tooltip-rapido" data-tooltip="Crear propiedad" (click)="crearPropiedad()"><i class="bi bi-plus-circle"></i></button>
       <div>
       <table class="table" border="0">
         <thead>
@@ -20,22 +20,22 @@
             </td>
             <td>
               <div class="acciones-botones">
-                <button type="button" class="btn btn-outline-primary" title="Ver detalle" (click)="verDetalle(propiedad.id)">
-                  <i class="bi bi-eye" title="Ver detalle"></i> Ver detalle
+                <button type="button" class="btn btn-outline-primary tooltip-rapido" data-tooltip="Ver detalle" (click)="verDetalle(propiedad.id)">
+                  <i class="bi bi-eye"></i> Ver detalle
                 </button>
-                <button [disabled]="false" type="button" class="btn btn-primary accion-icono-btn" title="Editar propiedad" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil" title="Editar"></i></button>
-                <button [disabled]="false" type="button" class="btn btn-danger accion-icono-btn" title="Eliminar propiedad" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash" title="Eliminar"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-primary accion-icono-btn tooltip-rapido" data-tooltip="Editar propiedad" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-danger accion-icono-btn tooltip-rapido" data-tooltip="Eliminar propiedad" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>
               </div>
             </td>
             <td>
               <div class="acciones-botones">
-                <button [disabled]="false" type="button" class="btn btn-success accion-icono-btn" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack" title="Ingresos"></i></button>
-                <button [disabled]="false" type="button" class="btn btn-dark accion-icono-btn" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2" title="Egresos"></i></button>
-                <button [disabled]="false" type="button" class="btn btn-info accion-icono-btn" title="Registrar zona" (click)="crearZona(propiedad.id)">
-                  <i class="bi bi-house-add" title="Crear zona"></i>
+                <button [disabled]="false" type="button" class="btn btn-success accion-icono-btn tooltip-rapido" data-tooltip="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-dark accion-icono-btn tooltip-rapido" data-tooltip="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-info accion-icono-btn tooltip-rapido" data-tooltip="Registrar zona" (click)="crearZona(propiedad.id)">
+                  <i class="bi bi-house-add"></i>
                 </button>
-                <button [disabled]="false" type="button" class="btn btn-secondary accion-icono-btn" title="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
-                  <i class="bi bi-box-seam" title="Registrar elemento de zona"></i>
+                <button [disabled]="false" type="button" class="btn btn-secondary accion-icono-btn tooltip-rapido" data-tooltip="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
+                  <i class="bi bi-box-seam"></i>
                 </button>
               </div>
             </td>

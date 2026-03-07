@@ -61,3 +61,52 @@
 .table td:nth-child(4) {
   text-align: center;
 }
+
+.tooltip-rapido {
+  position: relative;
+}
+
+.tooltip-rapido::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%) translateY(4px);
+  background-color: #111827;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 6px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 20;
+}
+
+.tooltip-rapido::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 2px);
+  transform: translateX(-50%) translateY(4px);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #111827;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 20;
+}
+
+.tooltip-rapido:hover::after,
+.tooltip-rapido:hover::before,
+.tooltip-rapido:focus-visible::after,
+.tooltip-rapido:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
