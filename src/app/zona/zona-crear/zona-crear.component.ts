@@ -21,6 +21,7 @@ export class ZonaCrearComponent implements OnInit {
   zonaForm: FormGroup;
   idPropiedad: number;
   listaZonasPosibles: ZonaPosible[] = [];
+  zonasExistentes: Zona[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,9 +44,22 @@ export class ZonaCrearComponent implements OnInit {
     this.enumService.zonasPosibles().subscribe((zonasPosibles) => {
       this.listaZonasPosibles = zonasPosibles;
     });
+
+    this.zonaService.obtenerZonasPropiedad(this.idPropiedad).subscribe((zonas) => {
+      this.zonasExistentes = zonas;
+    });
   }
 
   crearZona(zona: Zona): void {
+    const nombreDuplicado = this.zonasExistentes.some(
+      z => z.nombre_zona.toLowerCase() === zona.nombre_zona.toLowerCase()
+    );
+
+    if (nombreDuplicado) {
+      this.toastr.error("Error", "Ya existe una zona con ese nombre en esta propiedad");
+      return;
+    }
+
     this.zonaService.crearZonaPropiedad(zona, this.idPropiedad).subscribe(() => {
       this.toastr.success("Confirmation", "Zona creada")
       this.zonaForm.reset({
