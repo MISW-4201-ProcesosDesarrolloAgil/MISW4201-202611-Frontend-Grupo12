@@ -1,33 +1,43 @@
 <app-encabezado></app-encabezado>
 <h1>Propiedades</h1>
       
-      Propiedades <button type="button" class="btn btn-warning" (click)="crearPropiedad()"><i class="bi bi-plus-circle"></i></button>
+      Propiedades <button type="button" class="btn btn-warning tooltip-rapido" data-tooltip="Crear propiedad" (click)="crearPropiedad()"><i class="bi bi-plus-circle"></i></button>
       <div>
       <table class="table" border="0">
         <thead>
           <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Nombre propietario</th>
-          <th>Contacto</th>
-          <th>Acciones</th>
+          <th>Estado</th>
+          <th>Gestion de propiedad</th>
+          <th>Administracion del inmueble</th>
         </thead>
         <tbody>
           <tr *ngFor="let propiedad of propiedades">
             <td><button class="nombre-propiedad-link" (click)="verDetalle(propiedad.id)">{{propiedad.nombre_propiedad}}</button></td>
-            <td>{{propiedad.direccion}}</td>
-            <td>{{propiedad.nombre_propietario}}</td>
-            <td>{{propiedad.numero_contacto}}</td>
             <td>
-              <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-success" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-dark" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-info" title="Registrar zona" (click)="crearZona(propiedad.id)">
-                <i class="bi bi-plus-square"></i> Zona
-              </button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-secondary" title="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
-                <i class="bi bi-plus-square-dotted"></i> Elemento zona
-              </button>
+              <span class="badge-estado" [ngClass]="claseEstadoPropiedad(propiedad)">
+                {{ estadoPropiedad(propiedad) }}
+              </span>
+            </td>
+            <td>
+              <div class="acciones-botones">
+                <button type="button" class="btn btn-outline-primary tooltip-rapido" data-tooltip="Ver detalle" (click)="verDetalle(propiedad.id)">
+                  <i class="bi bi-eye"></i> Ver detalle
+                </button>
+                <button [disabled]="false" type="button" class="btn btn-primary accion-icono-btn tooltip-rapido" data-tooltip="Editar propiedad" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-danger accion-icono-btn tooltip-rapido" data-tooltip="Eliminar propiedad" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>
+              </div>
+            </td>
+            <td>
+              <div class="acciones-botones">
+                <button [disabled]="false" type="button" class="btn btn-success accion-icono-btn tooltip-rapido" data-tooltip="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-dark accion-icono-btn tooltip-rapido" data-tooltip="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2"></i></button>
+                <button [disabled]="false" type="button" class="btn btn-info accion-icono-btn tooltip-rapido" data-tooltip="Registrar zona" (click)="crearZona(propiedad.id)">
+                  <i class="bi bi-house-add"></i>
+                </button>
+                <button [disabled]="false" type="button" class="btn btn-secondary accion-icono-btn tooltip-rapido" data-tooltip="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
+                  <i class="bi bi-box-seam"></i>
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
