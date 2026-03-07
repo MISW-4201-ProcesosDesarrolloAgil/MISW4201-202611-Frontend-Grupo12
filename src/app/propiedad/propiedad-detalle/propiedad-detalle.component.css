@@ -1,0 +1,336 @@
+.detalle-container {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 16px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1a1a2e;
+}
+
+/* Back link */
+.volver-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #444;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+.volver-link:hover {
+  color: #1a56db;
+}
+
+/* Header */
+.propiedad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.propiedad-titulo-bloque {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.icono-propiedad {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #e8f0fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #1a56db;
+  flex-shrink: 0;
+}
+
+.propiedad-nombre {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #1a1a2e;
+}
+
+.propiedad-direccion {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Estado badge */
+.badge-estado {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-estado.activa {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.badge-estado.inactiva {
+  background-color: #fee2e2;
+  color: #9b1c1c;
+}
+
+/* Section cards */
+.card-seccion {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.seccion-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.seccion-titulo i {
+  color: #1a56db;
+}
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.info-item > i {
+  font-size: 1.2rem;
+  color: #1a56db;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.info-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+/* Reservas table */
+.tabla-reservas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tabla-reservas thead tr {
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tabla-reservas th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.tabla-reservas tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+}
+
+.tabla-reservas tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.tabla-reservas td {
+  padding: 12px 12px;
+  color: #1a1a2e;
+}
+
+/* Reserva status badges */
+.badge-reserva {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.badge-completada {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.badge-confirmada {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-en-curso {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* Sin elementos */
+.sin-elementos {
+  color: #aaa;
+  font-size: 0.85rem;
+  padding: 8px 0 4px 0;
+}
+
+/* Zonas grid */
+.zonas-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.zona-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: #fafafa;
+}
+
+.zona-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.zona-header > i {
+  color: #1a56db;
+  font-size: 1.1rem;
+}
+
+.zona-nombre {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a1a2e;
+  text-transform: capitalize;
+  flex: 1;
+}
+
+.zona-badge {
+  font-size: 0.75rem;
+  background: #e8f0fe;
+  color: #1a56db;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.zona-descripcion {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0 0 12px 0;
+}
+
+/* Elements table */
+.tabla-elementos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 8px;
+}
+
+.tabla-elementos thead tr {
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tabla-elementos th {
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.tabla-elementos tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tabla-elementos tbody tr:hover {
+  background: #f0f4ff;
+}
+
+.tabla-elementos td {
+  padding: 9px 10px;
+  color: #1a1a2e;
+}
+
+.col-cantidad {
+  text-align: center;
+  width: 90px;
+}
+
+.col-descripcion {
+  color: #555;
+}
+
+.cantidad-badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a56db;
+  border-radius: 8px;
+  padding: 2px 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Sin reservas */
+.sin-reservas {
+  color: #888;
+  font-size: 0.9rem;
+  padding: 12px 0;
+}
+
+/* Loading / error states */
+.estado-mensaje {
+  text-align: center;
+  padding: 48px;
+  color: #666;
+  font-size: 1rem;
+}
+
+.estado-mensaje.error {
+  color: #dc2626;
+}

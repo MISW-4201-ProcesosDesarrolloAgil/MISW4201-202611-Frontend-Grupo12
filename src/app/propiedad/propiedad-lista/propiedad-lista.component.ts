@@ -27,7 +27,7 @@ export class PropiedadListaComponent implements OnInit {
 
   ngOnInit() {
     this.propiedadService.darPropiedades().subscribe((propiedades) => {
-      this.propiedades = propiedades;
+      this.propiedades = this.filtrarPropiedadesDelDueno(propiedades);
     },
     error => {
       if (error.statusText === "UNAUTHORIZED") {
@@ -42,13 +42,62 @@ export class PropiedadListaComponent implements OnInit {
     });
   }
 
+  filtrarPropiedadesDelDueno(propiedades: Propiedad[]): Propiedad[] {
+    const idUsuarioSesion = Number(sessionStorage.getItem('idUsuario'));
+
+    // Si no hay id de usuario en sesión, se conserva el filtro del backend.
+    if (!idUsuarioSesion) {
+      return propiedades;
+    }
+
+    const propiedadesConIdDueno = propiedades.filter((propiedad: any) => {
+      const posiblesIds = [
+        propiedad?.id_usuario,
+        propiedad?.idUsuario,
+        propiedad?.id_propietario,
+        propiedad?.idPropietario,
+        propiedad?.propietario_id,
+        propiedad?.propietario?.id
+      ];
+
+      return posiblesIds.some((id) => Number(id) === idUsuarioSesion);
+    });
+
+    return propiedadesConIdDueno.length > 0 ? propiedadesConIdDueno : propiedades;
+  }
+
+  estadoPropiedad(propiedad: any): string {
+    const valorEstado = propiedad?.estado ?? propiedad?.estado_propiedad;
+
+    if (typeof valorEstado === 'string') {
+      const estadoNormalizado = valorEstado.trim().toLowerCase();
+      return estadoNormalizado.includes('inact') ? 'Inactiva' : 'Activa';
+    }
+
+    const banderaActiva = propiedad?.activa ?? propiedad?.activo ?? propiedad?.es_activa;
+    if (typeof banderaActiva === 'boolean') {
+      return banderaActiva ? 'Activa' : 'Inactiva';
+    }
+
+    return 'Activa';
+  }
+
+  claseEstadoPropiedad(propiedad: any): string {
+    return this.estadoPropiedad(propiedad) === 'Inactiva' ? 'inactiva' : 'activa';
+  }
+
   crearPropiedad():void {
     this.routerPath.navigate(['/propiedad/crear/']);
   }
 
-  movimientos(idPropiedad: number): void {
+  verIngresos(idPropiedad: number): void {
     this.setActivePropiedad(idPropiedad);
-    this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/movimientos']);
+    this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/ingresos']);
+  }
+
+  verEgresos(idPropiedad: number): void {
+    this.setActivePropiedad(idPropiedad);
+    this.routerPath.navigate(['/propiedades/'+ idPropiedad + '/egresos']);
   }
 
   crearZona(idPropiedad: number): void {
@@ -63,6 +112,10 @@ export class PropiedadListaComponent implements OnInit {
 
   setActivePropiedad(idPropiedad: number): void {
     sessionStorage.setItem('activePropiedadId', String(idPropiedad));
+  }
+
+  verDetalle(idPropiedad: number): void {
+    this.routerPath.navigate(['/propiedad/detalle/' + idPropiedad]);
   }
 
   editarPropiedad(idPropiedad: number):void {

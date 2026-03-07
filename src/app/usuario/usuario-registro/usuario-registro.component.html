@@ -70,14 +70,14 @@
               La contraseña debe tener más de 4 carácteres
             </div>
             <div class="alert alert-danger my-3"
-              *ngIf="usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">
+              *ngIf="usuarioForm.hasError('passwordsMismatch') && usuarioForm.get('confirmPassword')?.touched">
               Las contraseñas no coinciden
             </div>
           </div>
 
           <div class="col-12 text-center mt-3">
             <button type="submit" class="btn btn-warning col-8"
-              [disabled]="!usuarioForm.valid || usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">Registrarse</button>
+              [disabled]="!usuarioForm.valid">Registrarse</button>
           </div>
           <div class="col-12 text-center mt-2">
             <p>¿Ya tienes cuenta? <a [routerLink]="['/']">Inicia sesión</a></p>

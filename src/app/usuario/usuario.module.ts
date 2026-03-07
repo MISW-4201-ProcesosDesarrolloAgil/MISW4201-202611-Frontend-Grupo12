@@ -6,11 +6,12 @@ import { UsuarioRegistroComponent } from './usuario-registro/usuario-registro.co
 
 @NgModule({
   imports: [
-    CommonModule, ReactiveFormsModule
+    CommonModule,
+    ReactiveFormsModule,
+    UsuarioLoginComponent,
+    UsuarioRegistroComponent
   ],
-  exports: [UsuarioLoginComponent, UsuarioRegistroComponent],
-  declarations: [UsuarioLoginComponent, UsuarioRegistroComponent]
-
+  exports: [UsuarioLoginComponent, UsuarioRegistroComponent]
 })
 
 export class UsuarioModule { }

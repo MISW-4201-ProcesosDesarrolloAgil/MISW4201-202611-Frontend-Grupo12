@@ -1,0 +1,28 @@
+.container {
+  max-width: 1000px;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.table {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.text-success {
+  color: #198754;
+}
+
+h1 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}

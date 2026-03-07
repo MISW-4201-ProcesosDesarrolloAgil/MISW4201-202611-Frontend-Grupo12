@@ -31,6 +31,12 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   { 
+    path: 'propiedad/detalle/:id', 
+    loadComponent: () => import('./propiedad/propiedad-detalle/propiedad-detalle.component').then(m => m.PropiedadDetalleComponent),
+    canActivate: [authGuard],
+    pathMatch: 'full'
+  },
+  { 
     path: 'propiedades/:id/reservas', 
     loadComponent: () => import('./reserva/reserva-lista/reserva-lista.component').then(m => m.ReservaListaComponent),
     canActivate: [authGuard],
@@ -39,6 +45,18 @@ export const routes: Routes = [
   { 
     path: 'propiedades/:id/movimientos', 
     loadComponent: () => import('./movimiento/movimiento-lista/movimiento-lista.component').then(m => m.MovimientoListaComponent),
+    canActivate: [authGuard],
+    pathMatch: 'full'
+  },
+  { 
+    path: 'propiedades/:id/ingresos', 
+    loadComponent: () => import('./movimiento/ingreso-lista/ingreso-lista.component').then(m => m.IngresoListaComponent),
+    canActivate: [authGuard],
+    pathMatch: 'full'
+  },
+  { 
+    path: 'propiedades/:id/egresos', 
+    loadComponent: () => import('./movimiento/egreso-lista/egreso-lista.component').then(m => m.EgresoListaComponent),
     canActivate: [authGuard],
     pathMatch: 'full'
   },
