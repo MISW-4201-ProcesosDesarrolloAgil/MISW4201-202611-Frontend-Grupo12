@@ -6,27 +6,33 @@
       <table class="table" border="0">
         <thead>
           <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Nombre propietario</th>
-          <th>Contacto</th>
+          <th>Estado</th>
+          <th>Detalle</th>
           <th>Acciones</th>
         </thead>
         <tbody>
           <tr *ngFor="let propiedad of propiedades">
             <td><button class="nombre-propiedad-link" (click)="verDetalle(propiedad.id)">{{propiedad.nombre_propiedad}}</button></td>
-            <td>{{propiedad.direccion}}</td>
-            <td>{{propiedad.nombre_propietario}}</td>
-            <td>{{propiedad.numero_contacto}}</td>
             <td>
-              <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-success" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack"></i></button>&nbsp;
-              <button [disabled]="false" type="button" class="btn btn-dark" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2"></i></button>&nbsp;
+              <span class="badge-estado" [ngClass]="claseEstadoPropiedad(propiedad)">
+                {{ estadoPropiedad(propiedad) }}
+              </span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-primary" (click)="verDetalle(propiedad.id)">
+                <i class="bi bi-eye" title="Ver detalle"></i> Ver detalle
+              </button>
+            </td>
+            <td>
+              <button [disabled]="false" type="button" class="btn btn-primary" title="Editar propiedad" (click)="editarPropiedad(propiedad.id)"><i class="bi bi-pencil" title="Editar"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-danger" title="Eliminar propiedad" (click)="borrarPropiedad(propiedad.id)"><i class="bi bi-trash" title="Eliminar"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-success" title="Ver ingresos" (click)="verIngresos(propiedad.id)"><i class="bi bi-cash-stack" title="Ingresos"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-dark" title="Ver egresos" (click)="verEgresos(propiedad.id)"><i class="bi bi-wallet2" title="Egresos"></i></button>&nbsp;
               <button [disabled]="false" type="button" class="btn btn-info" title="Registrar zona" (click)="crearZona(propiedad.id)">
-                <i class="bi bi-plus-square"></i> Zona
+                <i class="bi bi-house-add" title="Crear zona"></i>
               </button>&nbsp;
               <button [disabled]="false" type="button" class="btn btn-secondary" title="Registrar elemento de zona" (click)="crearElementoZona(propiedad.id)">
-                <i class="bi bi-plus-square-dotted"></i> Elemento zona
+                <i class="bi bi-box-seam" title="Registrar elemento de zona"></i>
               </button>
             </td>
           </tr>

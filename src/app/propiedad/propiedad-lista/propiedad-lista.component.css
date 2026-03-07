@@ -13,3 +13,21 @@
 .nombre-propiedad-link:hover {
   text-decoration: underline;
 }
+
+.badge-estado {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge-estado.activa {
+  background-color: #d1f3dd;
+  color: #166534;
+}
+
+.badge-estado.inactiva {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
